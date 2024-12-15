@@ -3,6 +3,9 @@ import pandas as pd
 from datetime import datetime, timezone
 from typing import NamedTuple
 
+# Module used to interpret binary navlab-solution.
+# Joakim Skjefstad
+
 class NavlabRow(NamedTuple):
     timestamp: float
     lat: float

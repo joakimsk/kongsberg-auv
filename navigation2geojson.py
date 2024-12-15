@@ -1,15 +1,17 @@
 import pandas as pd
 import json
-import os
 from pathlib import Path
-import pathlib
 from tkinter import Tk
 from tkinter.filedialog import askdirectory
 import re
 import hashlib
 
+# Import local module
 import pynavlab
 
+# navigation2geojson.py
+# Trying to convert all navigation solutions for comparison. Work in progress.
+# Joakim Skjefstad
 
 def compute_checksum(file_path):
     """Compute the SHA-256 checksum of a file."""

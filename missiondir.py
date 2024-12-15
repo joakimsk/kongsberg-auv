@@ -2,6 +2,10 @@ import os
 from tkinter import Tk
 from tkinter.filedialog import askdirectory
 
+# missiondir.py
+# Supposed to help interface an AUV mission directory, work in progress.
+# Joakim Skjefstad
+
 def get_open_access_filepaths():
     # Hide the root Tkinter window
     Tk().withdraw()

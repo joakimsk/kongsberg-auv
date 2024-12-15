@@ -4,6 +4,10 @@ from pathlib import Path
 from tkinter import Tk
 from tkinter.filedialog import askdirectory
 
+# navp2geojson.py
+# Read navp (internal) navigation solution and make a geojson-output.
+# Joakim Skjefstad
+
 def navp_trajectory(mission_folder_path: Path, nth_row=1):
     mission_name = mission_folder_path.name
     format_file_path = mission_folder_path / Path(r"cp\data\format.txt")
@@ -80,17 +84,17 @@ def navp_trajectory(mission_folder_path: Path, nth_row=1):
                 "geometry": {
                     "type": "LineString",
                     "coordinates": coordinates
+                },
+                "properties": {
+                    "mission_name": mission_name,
+                    "mission_starttime_utc" : mission_starttime.strftime('%Y-%m-%d %H:%M:%S'),
+                    "mission_endtime_utc" : mission_endtime.strftime('%Y-%m-%d %H:%M:%S')
                 }
             }
 
     feature_collection = {
         "type": "FeatureCollection",
-        "features": [startpoint_feature, trajectory_feature, endpoint_feature],
-        "properties": {
-                    "mission_name": mission_name,
-                    "mission_starttime_utc" : mission_starttime.strftime('%Y-%m-%d %H:%M:%S'),
-                    "mission_endtime_utc" : mission_endtime.strftime('%Y-%m-%d %H:%M:%S')
-                }
+        "features": [startpoint_feature, trajectory_feature, endpoint_feature]
     }
 
     return feature_collection
